@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { RecommendationsTable } from "./recommendationTable";
 import Extra from "./extra";

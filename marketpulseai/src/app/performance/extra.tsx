@@ -3,7 +3,12 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FreeMode, Pagination } from "swiper/modules";
-import ApexChart from "@/components/features/candle";
+import dynamic from 'next/dynamic';
+
+// Dynamically import ApexChart with ssr disabled
+const ApexChart = dynamic(() => import("@/components/features/candle"), {
+  ssr: false,
+});
 
 const Extra = () => {
   return (
