@@ -1,10 +1,10 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import dayjs from 'dayjs';
 
 const ApexChart = () => {
-  const [state, setState] = useState({
+  const state = ({
     series: [{
       name: 'candle',
       data: [
@@ -253,11 +253,12 @@ const ApexChart = () => {
     options: {
       chart: {
         height: 350,
-        type: 'candlestick' as 'candlestick',
+        type: 'candlestick' as const,
+
       },
       title: {
         text: 'CandleStick Chart - Category X-axis',
-        align: 'left' as 'left'
+        align: 'left' as const
       },
       annotations: {
         xaxis: [
@@ -282,9 +283,9 @@ const ApexChart = () => {
         enabled: true,
       },
       xaxis: {
-        type: 'category' as 'category',
+        type: 'category' as const,
         labels: {
-          formatter: function(val : any) {
+          formatter: function(val : string) {
             return dayjs(val).format('MMM DD HH:mm')
           }
         }

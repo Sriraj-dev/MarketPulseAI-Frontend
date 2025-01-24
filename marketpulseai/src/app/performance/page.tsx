@@ -1,6 +1,5 @@
 import React from "react";
 import { RecommendationsTable } from "./recommendationTable";
-import ApexChart from "@/components/features/candle";
 import Extra from "./extra";
 
 const index = () => {
