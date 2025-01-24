@@ -18,7 +18,7 @@ const Overview = () => {
           <h3 className="font-semibold">Key Drivers of Market Movement</h3>
           <ul className="list-disc pl-4 space-y-2 text-sm text-muted-foreground">
             <li>Sectoral Performance: All sectoral indices succumbed to selling pressure</li>
-            <li>Earnings Impact: The market's downturn was exacerbated by weak corporate earnings</li>
+            <li>Earnings Impact: The market downturn was exacerbated by weak corporate earnings</li>
             <li>International Context: The markets reacted to global cues</li>
             <li>Regulatory Comments: Key speeches at the Association of Investment Bankers convention</li>
           </ul>

@@ -31,15 +31,12 @@ const Extra = () => {
             spaceBetween: 30,
           },
           1024: {
-            slidesPerView: 4.6,
+            slidesPerView: 3,
             spaceBetween: 30,
           },
         }}
       >
-          <SwiperSlide >
-                 <ApexChart />
-
-          </SwiperSlide>
+         
           <SwiperSlide >
                  <ApexChart />
 

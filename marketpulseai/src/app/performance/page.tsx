@@ -1,6 +1,7 @@
 import React from "react";
 import { RecommendationsTable } from "./recommendationTable";
 import ApexChart from "@/components/features/candle";
+import Extra from "./extra";
 
 const index = () => {
 
@@ -40,6 +41,7 @@ const index = () => {
   return (
     <div className="container w-11/12 mx-auto py-8">
       <h2 className="text-2xl font-bold mb-6">Past Performance</h2>
+      <Extra />
       <div className="flex flex-wrap gap-8">
   
       </div>
