@@ -39,7 +39,7 @@ const index = () => {
   ];
 
   return (
-    <div className="container w-11/12 mx-auto py-8">
+    <div className="w-11/12 mx-auto py-8">
       <h2 className="text-2xl font-bold mb-6">Past Performance</h2>
       <Extra />
       <div className="flex flex-wrap gap-8">

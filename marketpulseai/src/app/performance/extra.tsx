@@ -1,9 +1,9 @@
-'use client'
+'use client';
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FreeMode, Pagination } from "swiper/modules";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
 // Dynamically import ApexChart with ssr disabled
 const ApexChart = dynamic(() => import("@/components/features/candle"), {
@@ -12,51 +12,26 @@ const ApexChart = dynamic(() => import("@/components/features/candle"), {
 
 const Extra = () => {
   return (
-    <>
     <div className="mb-8">
       <Swiper
-        spaceBetween={30}
         freeMode={true}
         pagination={{
           clickable: true,
         }}
         modules={[FreeMode, Pagination]}
         className="mySwiper"
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-        }}
+        spaceBetween={20} 
+        slidesPerView="auto" 
       >
-         
-          <SwiperSlide >
-                 <ApexChart />
-
+        {[...Array(5)].map((_, index) => (
+          <SwiperSlide key={index} className="flex justify-center !w-[400px]">
+            <div className="w-[300px]"> {/* Adjust width as per your card size */}
+              <ApexChart />
+            </div>
           </SwiperSlide>
-          <SwiperSlide >
-                 <ApexChart />
-
-          </SwiperSlide>
-          <SwiperSlide >
-                 <ApexChart />
-
-          </SwiperSlide>
+        ))}
       </Swiper>
-      </div>
-    </>
+    </div>
   );
 };
 

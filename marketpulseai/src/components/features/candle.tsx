@@ -289,18 +289,19 @@ const ApexChart = () => {
   };
 
   return (
-    <div className="bg-[#F6F6F6] rounded-2xl p-4">
-      <div id="chart" className="bg-white my-4">
+    <div className="bg-[#F6F6F6] rounded-2xl p-4 w-fit" >
+      <div id="chart" className="bg-white my-4 ">
+      <div className="w-[15rem] sm:w-[22rem] mx-auto">
         <ReactApexChart
           series={state.series}
-          options={state.options} // Pass the options here
+          options={state.options}
           type="candlestick"
-          height={250}
-          width={400}
+          height={200}
         />
       </div>
+      </div>
       <div className="flex-1">
-        <div className="flex justify-between items-center">
+        <div className="flex sm:flex-row flex-col justify-between sm:items-center items-start">
           <div className="flex items-center gap-2">
             <h4 className="font-semibold text-base">Adani Enterprises</h4>
             <span className={`px-2 py-0.5 rounded text-xs font-medium `}>
