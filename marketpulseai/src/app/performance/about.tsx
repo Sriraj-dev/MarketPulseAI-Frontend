@@ -1,7 +1,6 @@
 "use client"
 
 import dynamic from 'next/dynamic';
-import { Card } from "@/components/ui/card"
 
 // Dynamically import ApexChart with ssr disabled
 const ApexChart = dynamic(() => import("@/components/features/candle"), {
