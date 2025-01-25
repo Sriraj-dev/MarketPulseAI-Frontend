@@ -24,13 +24,13 @@ export function RecommendationsTable({ recommendations }: { recommendations: Rec
       <div className="rounded-lg border">
         <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Recommendation</TableHead>
-              <TableHead>Suggested On</TableHead>
-              <TableHead>Suggested At</TableHead>
-              <TableHead>Current Price</TableHead>
-              <TableHead>Source</TableHead>
+            <TableRow >
+              <TableHead className="font-bold text-lg">Name</TableHead>
+              <TableHead className="font-bold text-lg">Recommendation</TableHead>
+              <TableHead className="font-bold text-lg">Suggested On</TableHead>
+              <TableHead className="font-bold text-lg">Suggested At</TableHead>
+              <TableHead className="font-bold text-lg">Current Price</TableHead>
+              <TableHead className="font-bold text-lg">Source</TableHead>
               <TableHead></TableHead>
             </TableRow>
           </TableHeader>

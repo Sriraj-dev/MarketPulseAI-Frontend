@@ -9,7 +9,7 @@ const Home1 = () => {
     <div >
       
      <MarketSummary />
-      <div className="flex md:flex-row flex-col gap-8">
+      <div className="flex md:flex-row flex-col gap-8 px-6">
        
       <Overview />
 <Recommendations />

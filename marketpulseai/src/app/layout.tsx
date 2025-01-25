@@ -16,12 +16,14 @@ export default function RootLayout({
     <html lang="en">
       <body
       >
-        <div className="container xl:w-10/12  p-6 mx-auto">
-      
+        <div className=" h-48 bg-gradient-to-b from-[#e5f7ed] to-[#FFFFFF]">
+
       <Navbar />
         {children}
         </div>
+
       </body>
+
     </html>
   );
 }

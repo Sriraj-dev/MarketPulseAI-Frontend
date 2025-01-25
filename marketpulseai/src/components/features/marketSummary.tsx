@@ -18,7 +18,7 @@ const experienceData = [
 const MarketSummary = () => {
   return (
     <>
-    <div className="mb-8">
+    <div className="my-6 bg-backgroundImage pb-6 w-10/12 mx-auto">
       <Swiper
         spaceBetween={30}
         freeMode={true}
@@ -46,19 +46,19 @@ const MarketSummary = () => {
             spaceBetween: 30,
           },
           1300: {
-            slidesPerView: 4.6,
+            slidesPerView: 5,
             spaceBetween: 30,
           },
         }}
       >
         {experienceData.map((experience, index) => (
           <SwiperSlide key={index}>
-            <Card className="w-56">
-              <CardContent className="flex flex-col p-4">
-                <div className="flex justify-between items-start mb-2">
-                  <p className="text-sm text-muted-foreground">{experience.name}</p>
+            <Card className="w-44">
+              <CardContent className="flex flex-col p-3 font-semibold">
+                <div className="flex justify-between items-center mb-2">
+                  <p className="text-base text-muted-foreground ">{experience.name}</p>
                   <span
-                    className={`text-xs ${
+                    className={`text-sm ${
                       experience.change.startsWith("+")
                         ? "text-green-600"
                         : "text-red-600"
@@ -68,7 +68,7 @@ const MarketSummary = () => {
                   </span>
                 </div>
                 <div className="flex justify-between items-baseline">
-                  <p className="text-2xl font-semibold">{experience.value}</p>
+                  <p className="text-base">{experience.value}</p>
                   <span
                     className={`text-sm ${
                       experience.delta.startsWith("+")
@@ -84,7 +84,9 @@ const MarketSummary = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      
       </div>
+    
     </>
   );
 };

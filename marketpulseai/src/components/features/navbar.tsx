@@ -2,30 +2,39 @@
 import { CircleUserRound } from "lucide-react";
 import React, { useState } from "react";
 import { Button } from "../ui/button";
+import Image from "next/image";
+import logo from "../../../public/icon.png";
+import user from "../../../public/usericon.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="flex items-center justify-between mb-6">
-      <div className="flex items-center gap-2">
-        {/* <Image
-            src={`${process.env.NEXT_PUBLIC_ASSETS_URL}/x72JX.png`}
+    <div className=" p-6">
+    <nav className="flex items-center justify-between w-11/12 mx-auto ">
+      <div className="flex items-center gap-2 text-secondary">
+        <Image
+            src={logo}
             alt="Market Pulse Logo"
             width={32}
             height={32}
-            className="w-8 h-8"
-          /> */}
+          />
         <h1 className=" text-xl font-semibold">M@rketPulse AI</h1>
       </div>
       <button
         onClick={toggleDropdown}
-        className="rounded-full w-10 h-10 bg-gray-100 flex items-center justify-center"
+        className="rounded-full bg-transparent flex items-center justify-center"
       >
         <span className="sr-only">Profile</span>
 
-        <CircleUserRound />
+        {/* <CircleUserRound /> */}
+        <Image
+            src={user}
+            alt="Market Pulse Logo"
+            width={50}
+            height={50}
+          />
       </button>
       {isOpen && (
         <div
@@ -66,6 +75,7 @@ const Navbar = () => {
         </div>
       )}
     </nav>
+    </div>
   );
 };
 

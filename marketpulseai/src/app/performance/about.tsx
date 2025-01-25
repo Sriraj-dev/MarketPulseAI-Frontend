@@ -15,14 +15,15 @@ interface CompanyDetailsProps {
 
 export function CompanyDetails({ name, description }: CompanyDetailsProps) {
   return (
-    <Card className="my-6 mx-4 p-2">
+    <div className="my-6 mx-4 p-2">
       <p className="hidden">{name} , {description}</p>
-        <h2 className="text-2xl font-bold my-4">About</h2>
+       
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="md:col-span-1">
           <ApexChart />
           </div>
           <div className="md:col-span-2">
+          <h2 className="text-2xl font-bold my-4">About</h2>
             <p className="text-muted-foreground">
               Adani Enterprises Limited, together with its subsidiaries, operates as a conglomerate company in India and
               internationally. It operates through Integrated Resources Management, Mining Services, Commercial Mining,
@@ -34,7 +35,7 @@ export function CompanyDetails({ name, description }: CompanyDetailsProps) {
         
         </div>
   
-    </Card>
+    </div>
   )
 }
 
