@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
 
 const experienceData = [
   { name: "Nifty 50", value: "28,500", change: "+0.75%", delta: "+156.4" },
