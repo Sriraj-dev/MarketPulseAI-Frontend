@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 
-// Dynamically import ApexChart with ssr disabled
+
 const ApexChart = dynamic(() => import("@/components/features/candle"), {
   ssr: false,
 });
@@ -23,7 +23,7 @@ export function CompanyDetails({ name, description }: CompanyDetailsProps) {
           </div>
           <div className="">
           <h2 className="text-2xl font-bold my-4">About</h2>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground max-w-[40rem]">
               Adani Enterprises Limited, together with its subsidiaries, operates as a conglomerate company in India and
               internationally. It operates through Integrated Resources Management, Mining Services, Commercial Mining,
               New Energy Ecosystem, Airport, Road, and Others segments. The company offers transport and logistics

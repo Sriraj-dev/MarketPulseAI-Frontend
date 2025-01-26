@@ -9,7 +9,8 @@ const Recommendations = () => {
         <div className="flex justify-between items-center ">
           <h3 className="text-lg font-semibold">Recommendations</h3>
           <Link
-            className="text-sm text-blue-600 underline underline-offset-4"
+            className="text-sm text-blue-600  underline underline-offset-4"
+            style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
             href="/performance"
           >
             See All
@@ -56,16 +57,16 @@ const Recommendations = () => {
                       {rec.name}
                     </h4>
                     <span
-                      className={`px-2 py-0.5 rounded text-xs font-medium ${
+                      className={`px-2 py-0.5 rounded-2xl text-xs font-medium ${
                         rec.tag === "Buy"
-                          ? "bg-green-100 text-green-800"
-                          : "bg-red-100 text-red-800"
+                          ? "bg-secondary text-white"
+                          : "bg-danger text-white"
                       }`}
                     >
                       {rec.tag}
                     </span>
                   </div>
-                  <button className="bg-secondary rounded-full text-white text-xs px-4 py-1">
+                  <button className="bg-primary rounded-full text-white text-xs px-4 py-1">
                     MoneyControl.com
                   </button>
                 </div>

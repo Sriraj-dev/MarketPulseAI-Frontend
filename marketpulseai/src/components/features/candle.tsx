@@ -308,7 +308,7 @@ const ApexChart = () => {
               (+ 5.5%)
             </span>
           </div>
-          <button className="bg-secondary rounded-full text-white text-xs px-4 py-1">
+          <button className="bg-primary rounded-full text-white text-xs px-4 py-1">
             MoneyControl.com
           </button>
         </div>

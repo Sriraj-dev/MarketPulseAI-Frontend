@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import logo from "../../../public/icon.png";
 import user from "../../../public/usericon.png";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,9 @@ const Navbar = () => {
   return (
     <div className=" p-6">
     <nav className="flex items-center justify-between w-11/12 mx-auto ">
-      <div className="flex items-center gap-2 text-secondary">
+        <Link className="flex items-center gap-2 text-primary"
+        href={"/"}
+        >
         <Image
             src={logo}
             alt="Market Pulse Logo"
@@ -21,7 +24,7 @@ const Navbar = () => {
             height={32}
           />
         <h1 className=" text-xl font-semibold">M@rketPulse AI</h1>
-      </div>
+      </Link>
       <button
         onClick={toggleDropdown}
         className="rounded-full bg-transparent flex items-center justify-center"

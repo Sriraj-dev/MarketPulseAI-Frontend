@@ -66,24 +66,35 @@ const Overview = () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row lg:border-r-2">
-      <nav className="w-full md:block  h-fit hidden md:w-64 p-4 bg-gray-100 sticky top-0">
+<div className="flex flex-col md:flex-row lg:border-r border-[#EFF8F3]">
+      <nav className="w-full md:block  h-fit hidden md:w-64 p-4  sticky top-0">
         <ScrollArea className="h-full">
-          <ul className="space-y-2">
-            {sections.map((section) => (
-              <li key={section.id}>
-                <button
-                  onClick={() => scrollToSection(section.id)}
-                  className={cn(
-                    "w-full text-left px-2 py-1 rounded transition-colors",
-                    activeSection === section.id ? "bg-primary text-white" : "hover:bg-gray-200",
-                  )}
-                >
-                  {section.title}
-                </button>
-              </li>
-            ))}
-          </ul>
+          <div className="relative">
+            {/* Vertical line */}
+            <div className="absolute left-4 top-0 h-full w-[2px] bg-gray-300"></div>
+            <ul className="space-y-6 pl-8">
+              {sections.map((section) => (
+                <li key={section.id} className="relative">
+                  {/* Dot */}
+                  <div
+                    className={cn(
+                      "absolute -left-[23px] top-2 w-4 h-4 rounded-full border-2 transition-colors",
+                      activeSection === section.id ? "bg-primary border-primary" : "bg-white border-gray-300",
+                    )}
+                  ></div>
+                  <button
+                    onClick={() => scrollToSection(section.id)}
+                    className={cn(
+                      "w-full text-left px-2 py-1 rounded transition-colors",
+                      activeSection === section.id ? "text-primary font-bold" : "hover:text-gray-500",
+                    )}
+                  >
+                    {section.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         </ScrollArea>
       </nav>
       <main className="flex-1 p-4 overflow-auto">

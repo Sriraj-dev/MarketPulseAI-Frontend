@@ -1,8 +1,5 @@
-'use client'
+"use client";
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { FreeMode, Pagination } from "swiper/modules";
 import { Card, CardContent } from "@/components/ui/card";
 
 const experienceData = [
@@ -17,78 +14,82 @@ const experienceData = [
 
 const MarketSummary = () => {
   return (
-    <>
-    <div className="my-6 bg-backgroundImage pb-6 w-10/12 mx-auto">
-      <Swiper
-        spaceBetween={30}
-        freeMode={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[FreeMode, Pagination]}
-        className="mySwiper"
-        breakpoints={{
-          380: {
-            slidesPerView: 1.5,
-            spaceBetween: 10,
-          },
-          720: {
-            slidesPerView: 2.5,
-            spaceBetween: 20,
-          },
-          
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-          1200: {
-            slidesPerView: 4,
-            spaceBetween: 30,
-          },
-          1300: {
-            slidesPerView: 5,
-            spaceBetween: 30,
-          },
-        }}
+    <div className="my-6 bg-backgroundImage pb-6 mx-auto">
+    <div className="group flex overflow-hidden">
+      <div className="animate-loop-scroll group-hover:paused flex space-x-14">
+        {experienceData.map((experience, index) => (
+          <div className="w-36 h-fit border-[#4D5E7A] border rounded-xl" key={index}>
+            <div className="flex flex-col p-3 font-semibold">
+              <div className="flex justify-between items-center mb-2">
+                <p className="text-base leading-5 text-muted-foreground">
+                  {experience.name}
+                </p>
+                <span
+                  className={`text-xs ${
+                    experience.change.startsWith("+")
+                      ? "text-secondary"
+                      : "text-danger"
+                  }`}
+                >
+                  {experience.change}
+                </span>
+              </div>
+              <div className="flex justify-between items-baseline">
+                <p className="text-xs">{experience.value}</p>
+                <span
+                  className={`text-xs ${
+                    experience.delta.startsWith("+")
+                      ? "text-secondary"
+                      : "text-danger"
+                  }`}
+                >
+                  {experience.delta}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div
+        className="animate-loop-scroll group-hover:paused flex space-x-14 ml-[calc(36px)]"
+        aria-hidden="true"
       >
         {experienceData.map((experience, index) => (
-          <SwiperSlide key={index}>
-            <Card className="w-44">
-              <CardContent className="flex flex-col p-3 font-semibold">
-                <div className="flex justify-between items-center mb-2">
-                  <p className="text-base text-muted-foreground ">{experience.name}</p>
-                  <span
-                    className={`text-sm ${
-                      experience.change.startsWith("+")
-                        ? "text-green-600"
-                        : "text-red-600"
-                    }`}
-                  >
-                    {experience.change}
-                  </span>
-                </div>
-                <div className="flex justify-between items-baseline">
-                  <p className="text-base">{experience.value}</p>
-                  <span
-                    className={`text-sm ${
-                      experience.delta.startsWith("+")
-                        ? "text-green-600"
-                        : "text-red-600"
-                    }`}
-                  >
-                    {experience.delta}
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
-          </SwiperSlide>
+          <div className="w-36 h-fit border-[#4D5E7A] border rounded-xl" key={index}>
+            <div className="flex flex-col p-3 font-semibold">
+              <div className="flex justify-between items-center mb-2">
+                <p className="text-base leading-5 text-muted-foreground">
+                  {experience.name}
+                </p>
+                <span
+                  className={`text-xs ${
+                    experience.change.startsWith("+")
+                      ? "text-secondary"
+                      : "text-danger"
+                  }`}
+                >
+                  {experience.change}
+                </span>
+              </div>
+              <div className="flex justify-between items-baseline">
+                <p className="text-xs">{experience.value}</p>
+                <span
+                  className={`text-xs ${
+                    experience.delta.startsWith("+")
+                      ? "text-secondary"
+                      : "text-danger"
+                  }`}
+                >
+                  {experience.delta}
+                </span>
+              </div>
+            </div>
+          </div>
         ))}
-      </Swiper>
-      
       </div>
-    
-    </>
-  );
+    </div>
+  </div>
+);
 };
 
 export default MarketSummary;

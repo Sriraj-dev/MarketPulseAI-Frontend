@@ -62,6 +62,13 @@ body {
   }
 }
 
+
+@layer utilities {
+  .paused {
+    animation-play-state: paused;
+  }
+}
+
 .swiper-button-prev {
   display: none !important;
 }
@@ -70,3 +77,4 @@ body {
   color: black !important;
   right: 0 !important;
 }
+
