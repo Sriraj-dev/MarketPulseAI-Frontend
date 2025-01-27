@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import PastPerformance from "./pastPerformance";
 import { getStocksummary } from "@/api/marketData";
+import { StockRecommendation, StockSummaryResponse } from "@/models/marketModel";
 
 const Recommendations = () => {
   const [recommendations, setRecommendations] = useState<StockRecommendation[]>([]);

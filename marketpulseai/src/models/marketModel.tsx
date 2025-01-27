@@ -1,4 +1,4 @@
-interface StockRecommendation {
+export interface StockRecommendation {
     id: number;
     name: string;
     recommendation: "Buy" | "Sell";
@@ -7,23 +7,23 @@ interface StockRecommendation {
     reason: string;
 }
 
-interface StockSummary {
+export interface StockSummary {
     analysis: string[];
 }
 
-interface MarketAnalysisData {
+export interface MarketAnalysisData {
     recommendations: StockRecommendation[];
     analysis: StockSummary[];
 }
 
-interface MarketAnalysis {
+export interface MarketAnalysis {
     start_date: string;
     end_date: string;
     type: "Daily" | "Weekly" | "Monthly";
     data: MarketAnalysisData;
 }
 
-interface StockSummaryResponse {
+export interface StockSummaryResponse {
     message: string;
     market_analysis: MarketAnalysis[];
 }
