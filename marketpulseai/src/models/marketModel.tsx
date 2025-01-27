@@ -28,19 +28,19 @@ interface StockSummaryResponse {
     market_analysis: MarketAnalysis[];
 }
 
-interface StockOHLCResponse {
-    message: string;
-    chart_ohlc: ChartOhlc[];
-}
+// interface StockOHLCResponse {
+//     message: string;
+//     chart_ohlc: ChartOhlc[];
+// }
 
 
 
-type ChartOhlc = {
-    date: string; 
-    close: number; 
-    high: number; 
-    low: number; 
-    open: number; 
-    volume: number; 
-  };
+// type ChartOhlc = {
+//     date: string; 
+//     close: number; 
+//     high: number; 
+//     low: number; 
+//     open: number; 
+//     volume: number; 
+//   };
   
