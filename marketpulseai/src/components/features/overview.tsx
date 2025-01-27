@@ -1,11 +1,8 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { cn } from "@/lib/utils";
 import { getStocksummary } from "@/api/marketData";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import { TableOfContents } from "lucide-react";
 import TableOfContents1 from "@/components/features/toc";
 import { useMDXComponents } from "@/lib/mdxcomponents";
 
@@ -30,11 +27,8 @@ function extractTOC(content: string) {
 }
 
 const Overview = () => {
-  const [activeSection, setActiveSection] = useState("");
-  const [summaryData, setSummaryData] = useState<StockSummary[]>([]);
-  const [mdxSources, setMdxSources] = useState<any[]>([]); // Store serialized MDX sources for each section
+  const [mdxSources, setMdxSources] = useState<any[]>([]); 
   const [allTOC, setAllTOC] = useState<any[]>([]);
-  const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   useEffect(() => {
     const fetchStockSummary = async () => {
@@ -45,7 +39,6 @@ const Overview = () => {
         const analysis = data.market_analysis.flatMap(
           (analysis) => analysis.data.analysis
         );
-        setSummaryData(analysis);
 
         // Serialize the Markdown content for each analysis item
         const serializedContentPromises = analysis.map(async (item : any) => {
