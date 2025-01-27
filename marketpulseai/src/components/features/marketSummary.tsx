@@ -1,5 +1,7 @@
 "use client";
-import React from "react";
+import { getLiveMarket } from "@/api/marketData";
+import { LiveMarketData } from "@/models/marketModel";
+import React, { useEffect, useState } from "react";
 
 const experienceData = [
   { name: "Nifty 50", value: "28,500", change: "+0.75%", delta: "+156.4" },
@@ -12,37 +14,54 @@ const experienceData = [
 ];
 
 const MarketSummary = () => {
+ const [liveData, setLiveData] = useState<LiveMarketData[]>([]); 
+
+  useEffect(() => {
+    const fetchStockSummary = async () => {
+      try {
+        const data = await getLiveMarket();
+        setLiveData(data); 
+      } catch (error) {
+        console.error("Error fetching stock summary:", error);
+      }
+    };
+
+    fetchStockSummary();
+  }, []);
+
+
+
   return (
-    <div className="my-6 bg-backgroundImage pb-6 mx-auto">
+    <div className="my-3 bg-backgroundImage pb-6 mx-auto">
     <div className="group flex overflow-hidden">
       <div className="animate-loop-scroll group-hover:paused flex space-x-14">
-        {experienceData.map((experience, index) => (
-          <div className="w-36 h-fit border-[#4D5E7A] border rounded-xl" key={index}>
-            <div className="flex flex-col p-3 font-semibold">
-              <div className="flex justify-between items-center mb-2">
-                <p className="text-base leading-5 text-muted-foreground">
+        {liveData.map((experience, index) => (
+          <div className="w-32 h-fit border-[#4D5E7A] border rounded-xl" key={index}>
+            <div className="flex flex-col py-2 px-3  font-semibold">
+              <div className="flex justify-between items-center mb-1">
+                <p className="text-[13px] leading-3 text-muted-foreground">
                   {experience.name}
                 </p>
                 <span
                   className={`text-xs ${
-                    experience.change.startsWith("+")
+                    experience.percent_change.toString().startsWith("+")
                       ? "text-secondary"
                       : "text-danger"
                   }`}
                 >
-                  {experience.change}
+                  {experience.percent_change.toFixed(2)}%
                 </span>
               </div>
               <div className="flex justify-between items-baseline">
-                <p className="text-xs">{experience.value}</p>
+                <p className="text-xs">{experience.current_price.toFixed(0)}</p>
                 <span
                   className={`text-xs ${
-                    experience.delta.startsWith("+")
-                      ? "text-secondary"
-                      : "text-danger"
+                  experience.price_change.toFixed(2).startsWith("+")
+                    ? "text-secondary"
+                    : "text-danger"
                   }`}
                 >
-                  {experience.delta}
+                  {experience.price_change.toFixed(2)}
                 </span>
               </div>
             </div>
@@ -53,33 +72,33 @@ const MarketSummary = () => {
         className="animate-loop-scroll group-hover:paused flex space-x-14 ml-[calc(36px)]"
         aria-hidden="true"
       >
-        {experienceData.map((experience, index) => (
-          <div className="w-36 h-fit border-[#4D5E7A] border rounded-xl" key={index}>
-            <div className="flex flex-col p-3 font-semibold">
-              <div className="flex justify-between items-center mb-2">
-                <p className="text-base leading-5 text-muted-foreground">
+        {liveData.map((experience, index) => (
+          <div className="w-32 h-fit border-[#4D5E7A] border rounded-xl" key={index}>
+            <div className="flex flex-col py-2 px-3  font-semibold">
+              <div className="flex justify-between items-center mb-1">
+                <p className="text-[13px] leading-3 text-muted-foreground">
                   {experience.name}
                 </p>
                 <span
                   className={`text-xs ${
-                    experience.change.startsWith("+")
+                    experience.percent_change.toString().startsWith("+")
                       ? "text-secondary"
                       : "text-danger"
                   }`}
                 >
-                  {experience.change}
+                  {experience.percent_change.toFixed(2)}%
                 </span>
               </div>
               <div className="flex justify-between items-baseline">
-                <p className="text-xs">{experience.value}</p>
+                <p className="text-xs">{experience.current_price.toFixed(0)}</p>
                 <span
                   className={`text-xs ${
-                    experience.delta.startsWith("+")
-                      ? "text-secondary"
-                      : "text-danger"
+                  experience.price_change.toFixed(2).startsWith("+")
+                    ? "text-secondary"
+                    : "text-danger"
                   }`}
                 >
-                  {experience.delta}
+                  {experience.price_change.toFixed(2)}
                 </span>
               </div>
             </div>
