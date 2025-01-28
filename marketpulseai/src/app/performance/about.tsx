@@ -1,33 +1,50 @@
 "use client"
 
+import { getOhlcData } from '@/api/marketData';
+import { StockOHLCResponse, StockRecommendation } from '@/models/marketModel';
 import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 
 
 const ApexChart = dynamic(() => import("@/components/features/candle"), {
   ssr: false,
 });
 
-interface CompanyDetailsProps {
-  name: string
-  description: string
-}
 
-export function CompanyDetails({ name, description }: CompanyDetailsProps) {
+export function CompanyDetails({ rec }: {rec : StockRecommendation}) {
+
+   const [pastData, setPastData] = useState<StockOHLCResponse | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+  
+    useEffect(() => {
+       const fetchStockSummary = async () => {
+         try { 
+           const data = await getOhlcData(rec.ticker, rec.dateofrecommendation);
+           setPastData(data); 
+           setLoading(false);
+         } catch (error) {
+           console.error("Error fetching stock summary:", error);
+         }
+       };
+   
+       fetchStockSummary();
+     }, []);
+   
+  
+    if (loading) {
+      return <div>Loading...</div>; // Optionally, show a loading indicator
+    }
+
   return (
     <div className="my-6 mx-4 p-2">
-      <p className="hidden">{name} , {description}</p>
-       
         <div className="flex md:flex-row flex-col gap-4">
           <div className="">
-          <ApexChart />
+            <ApexChart ohlcData={pastData?.OHLC} details={rec} /> 
           </div>
           <div className="">
           <h2 className="text-2xl font-bold my-4">About</h2>
             <p className="text-muted-foreground max-w-[40rem]">
-              Adani Enterprises Limited, together with its subsidiaries, operates as a conglomerate company in India and
-              internationally. It operates through Integrated Resources Management, Mining Services, Commercial Mining,
-              New Energy Ecosystem, Airport, Road, and Others segments. The company offers transport and logistics
-              services; and manufactures cement, hydrogen and its derivatives.
+             {rec.reason}
             </p>
             <button className="text-primary mt-2">Know More</button>
           </div>

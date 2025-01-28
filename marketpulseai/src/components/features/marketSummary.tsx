@@ -3,22 +3,13 @@ import { getLiveMarket } from "@/api/marketData";
 import { LiveMarketData } from "@/models/marketModel";
 import React, { useEffect, useState } from "react";
 
-const experienceData = [
-  { name: "Nifty 50", value: "28,500", change: "+0.75%", delta: "+156.4" },
-  { name: "Nifty 50", value: "28,500", change: "+0.75%", delta: "+156.4" },
-  { name: "Nifty 50", value: "28,500", change: "+0.75%", delta: "+156.4" },
-  { name: "Nifty 50", value: "28,500", change: "+0.75%", delta: "+156.4" },
-  { name: "Sensex", value: "28,500", change: "+0.35%", delta: "+15.4" },
-  { name: "Pharma", value: "9,500", change: "-0.25%", delta: "-100.5" },
-  { name: "Fin Nifty", value: "15,432", change: "-0.50%", delta: "-250.4" },
-];
 
 const MarketSummary = () => {
  const [liveData, setLiveData] = useState<LiveMarketData[]>([]); 
 
   useEffect(() => {
     const fetchStockSummary = async () => {
-      try {
+      try { 
         const data = await getLiveMarket();
         setLiveData(data); 
       } catch (error) {

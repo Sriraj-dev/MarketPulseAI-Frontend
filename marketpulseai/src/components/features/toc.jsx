@@ -3,7 +3,15 @@
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
 
-export default function TableOfContents1({ items }) {
+const items = [
+    { id: 'Daily', title: 'Daily' },
+    { id: 'Weekly', title: 'Weekly' },
+    { id: 'Monthly', title: 'Monthly' },
+  ];
+
+export default function TableOfContents1() {
+
+
   const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
@@ -45,11 +53,9 @@ export default function TableOfContents1({ items }) {
 
   return (
     <>
-      <h2 className="text-lg font-semibold mb-2 text-black">Table of Contents</h2>
-    
 <nav className="relative">
       {/* Vertical line */}
-      <div className="absolute left-4 top-0 h-full w-[2px] bg-gray-300"></div>
+      <div className="absolute left-4 top-0 h-full w-[1px] bg-gray-300"></div>
 
       <ul className="space-y-6 pl-8">
         {items.map((item) => (
@@ -65,7 +71,7 @@ export default function TableOfContents1({ items }) {
               onClick={(e) => handleClick(e, item.id)}
               className={cn(
                 "w-full text-left px-2 py-1 rounded transition-colors",
-                activeId === item.id ? "text-primary font-bold" : "hover:text-gray-500"
+                activeId === item.id ? "text-white bg-primary font-bold" : "hover:text-gray-500"
               )}
             >
               {item.title}

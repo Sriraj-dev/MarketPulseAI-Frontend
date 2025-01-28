@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import PastPerformance from "./pastPerformance";
-import { getStocksummary } from "@/api/marketData";
-import { StockRecommendation, StockSummaryResponse } from "@/models/marketModel";
+import {  getSuggestions } from "@/api/marketData";
+import { StockRecommendation } from "@/models/marketModel";
 
 const Recommendations = () => {
   const [recommendations, setRecommendations] = useState<StockRecommendation[]>([]);
@@ -13,9 +13,9 @@ const Recommendations = () => {
   useEffect(() => {
       const fetchRecommendations = async () => {
           try {
-              const data: StockSummaryResponse = await getStocksummary();
-              const allRecommendations = data.market_analysis.flatMap(analysis => analysis.data.recommendations);
-              setRecommendations(allRecommendations);
+              const data = await getSuggestions();
+              console.log(data, "data");
+              setRecommendations(data);
           } catch (error) {
               setError("Error fetching recommendations");
               console.error("Error details:", error);
@@ -35,9 +35,14 @@ const Recommendations = () => {
     return <div>{error}</div>;
   }
 
+  const recommendationsToDisplay = recommendations
+    .filter((rec) => rec.type === "Weekly")
+    .slice(0, 6);
+
   return (
     <div className="lg:w-[26rem] w-full mx-auto mb-8">
-      <div className="bg-white">
+      <PastPerformance />
+      <div className="bg-white mt-10">
         <div className="flex justify-between items-center">
           <h3 className="text-lg font-semibold">Recommendations</h3>
           <Link
@@ -52,10 +57,10 @@ const Recommendations = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <div className="space-y-4">
-          {recommendations.map((rec , index) => (
+          {recommendationsToDisplay.map((rec , index) => (
             <div
               key={index}
-              className="flex items-start gap-4 p-2 hover:bg-gray-100"
+              className="flex items-start gap-4 p-2 "
             >
               <div className="flex-1">
                 <div className="flex sm:justify-between sm:flex-row flex-col gap-2 sm:gap-0 sm:items-center items-start">
@@ -87,7 +92,7 @@ const Recommendations = () => {
           ))}
         </div>
       </div>
-      <PastPerformance />
+  
     </div>
   );
 };

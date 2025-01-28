@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body
       >
-        <div className=" h-48 bg-gradient-to-b from-[#e5f7ed] to-[#FFFFFF]">
+        <div className=" h-52 bg-gradient-to-b from-[#cdefdc] to-[#FFFFFF]">
 
       <Navbar />
         {children}

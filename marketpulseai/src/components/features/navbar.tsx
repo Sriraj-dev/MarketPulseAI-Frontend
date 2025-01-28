@@ -12,7 +12,7 @@ const Navbar = () => {
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   return (
-    <div className=" p-6">
+    <div className="py-2 px-6">
     <nav className="flex items-center justify-between w-11/12 mx-auto ">
         <Link className="flex items-center gap-2 text-primary"
         href={"/"}

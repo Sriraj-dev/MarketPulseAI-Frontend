@@ -4,13 +4,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FreeMode, Pagination } from "swiper/modules";
 import dynamic from "next/dynamic";
+import {  StockCredibility } from "@/models/marketModel";
 
 // Dynamically import ApexChart with ssr disabled
 const ApexChart = dynamic(() => import("@/components/features/candle"), {
   ssr: false,
 });
 
-const Extra = () => {
+const Chartohlc = ({ pastData }: { pastData: StockCredibility[] }) => {
+
   return (
     <div className="mb-8">
       <Swiper
@@ -23,10 +25,10 @@ const Extra = () => {
         spaceBetween={20} 
         slidesPerView="auto" 
       >
-        {[...Array(5)].map((_, index) => (
+        {pastData.map((data, index) => (
           <SwiperSlide key={index} className="flex justify-center !w-[400px]">
-            <div className="w-[300px]"> {/* Adjust width as per your card size */}
-              <ApexChart />
+            <div className="w-[300px]">
+            <ApexChart ohlcData={data.Market_info.OHLC} details={data.DB_info} /> 
             </div>
           </SwiperSlide>
         ))}
@@ -35,4 +37,4 @@ const Extra = () => {
   );
 };
 
-export default Extra;
+export default Chartohlc;
