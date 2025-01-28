@@ -53,7 +53,7 @@ const PastPerformance = () => {
         {/* Pass the data to ApexChart */}
         {pastData.map((data, index) => (
           <SwiperSlide key={index} className="!w-full">
-            <ApexChart ohlcData={data.Market_info.OHLC} details={data.DB_info} /> 
+            <ApexChart ohlcData={data.Market_info.OHLC} details={data.DB_info} otherDetails={data.Market_info} /> 
           </SwiperSlide>
         ))}
       </Swiper>

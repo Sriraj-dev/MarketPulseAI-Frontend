@@ -10,6 +10,17 @@ body {
   font-family: Arial, sans-serif;
 }
 
+td {
+  font-family: 'Tenali Ramakrishna', sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+th {
+  font-size: 1.25rem;
+}
+
 p {
   font-family: 'Tenali Ramakrishna', sans-serif;
   font-weight: 400;
@@ -85,6 +96,7 @@ p {
 }
 
 .swiper-button-next {
+  opacity: 0.3;
   color: black !important;
   right: 0 !important;
 }

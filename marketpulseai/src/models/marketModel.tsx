@@ -91,6 +91,8 @@ export interface getCredibilityResponse {
     message: string;
     ticker: string;
     OHLC: OHLC[];
+    sector  : string;
+    marketCap : number;
   }
   
   export interface DBInfo {

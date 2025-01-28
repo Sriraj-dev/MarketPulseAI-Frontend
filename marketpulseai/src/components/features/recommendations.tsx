@@ -2,30 +2,34 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import PastPerformance from "./pastPerformance";
-import {  getSuggestions } from "@/api/marketData";
+import { getSuggestions } from "@/api/marketData";
 import { StockRecommendation } from "@/models/marketModel";
 
 const Recommendations = () => {
   const [recommendations, setRecommendations] = useState<StockRecommendation[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
+  const [displayCount, setDisplayCount] = useState<number>(3); // To track how many recommendations to show
 
   useEffect(() => {
-      const fetchRecommendations = async () => {
-          try {
-              const data = await getSuggestions();
-              console.log(data, "data");
-              setRecommendations(data);
-          } catch (error) {
-              setError("Error fetching recommendations");
-              console.error("Error details:", error);
-          } finally {
-              setLoading(false);
-          }
-      };
+    const fetchRecommendations = async () => {
+      try {
+        const data = await getSuggestions();
+        setRecommendations(data);
+      } catch (error) {
+        setError("Error fetching recommendations");
+        console.error("Error details:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-      fetchRecommendations();
+    fetchRecommendations();
   }, []);
+
+  const loadMore = () => {
+    setDisplayCount((prev) => prev + 3); // Increment by 3
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -35,9 +39,9 @@ const Recommendations = () => {
     return <div>{error}</div>;
   }
 
-  const recommendationsToDisplay = recommendations
-    .filter((rec) => rec.type === "Weekly")
-    .slice(0, 6);
+  // Filter for weekly recommendations and slice based on displayCount
+  const weeklyRecommendations = recommendations.filter((rec) => rec.type === "Weekly");
+  const recommendationsToDisplay = weeklyRecommendations.slice(0, displayCount); // Slice based on displayCount
 
   return (
     <div className="lg:w-[26rem] w-full mx-auto mb-8">
@@ -57,7 +61,7 @@ const Recommendations = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <div className="space-y-4">
-          {recommendationsToDisplay.map((rec , index) => (
+          {recommendationsToDisplay.map((rec, index) => (
             <div
               key={index}
               className="flex items-start gap-4 p-2 "
@@ -81,7 +85,7 @@ const Recommendations = () => {
                     </span>
                   </div>
                   <button className="bg-primary rounded-full text-white text-xs px-4 py-1">
-                   {rec.source}
+                    {rec.source}
                   </button>
                 </div>
                 <p className=" text-gray-600 mt-2 sm:ml-6 ml-2">
@@ -91,8 +95,16 @@ const Recommendations = () => {
             </div>
           ))}
         </div>
+        {recommendationsToDisplay.length < weeklyRecommendations.length && (
+          <button
+            onClick={loadMore}
+            className="mt-4 bg-[#F6F6F6] text-xl text-black w-full px-4 py-2 "
+          >
+            <p className="flex m-auto justify-center"> Load More</p>
+           
+          </button>
+        )}
       </div>
-  
     </div>
   );
 };

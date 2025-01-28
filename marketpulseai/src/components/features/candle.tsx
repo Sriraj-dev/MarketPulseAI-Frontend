@@ -1,13 +1,15 @@
 "use client";
+import { formatNumber } from "@/lib/numberformat";
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
 interface ApexChartProps {
   ohlcData: any;
   details: any;
+  otherDetails: any;
 }
 
-const ApexChart = ({ ohlcData , details }: ApexChartProps) => {
+const ApexChart = ({ ohlcData , details , otherDetails }: ApexChartProps) => {
 
   const state = {
     series: [
@@ -76,12 +78,12 @@ const ApexChart = ({ ohlcData , details }: ApexChartProps) => {
               (+ 5.5%)
             </span>
           </div>
-          <button className="bg-primary rounded-full text-white text-xs px-4 py-1">
-           {details.source}
+          <button className="bg-primary rounded-full text-white text-sm px-4 py-1">
+           {otherDetails.sector}
           </button>
         </div>
-        <p className="text-sm text-gray-600 mt-2">
-          Market Cap : 383.67 billion
+        <p className="text-base text-gray-600 mt-2">
+          Market Cap: {formatNumber(otherDetails.marketCap)}
         </p>
       </div>
     </div>

@@ -28,7 +28,7 @@ const Chartohlc = ({ pastData }: { pastData: StockCredibility[] }) => {
         {pastData.map((data, index) => (
           <SwiperSlide key={index} className="flex justify-center !w-[400px]">
             <div className="w-[300px]">
-            <ApexChart ohlcData={data.Market_info.OHLC} details={data.DB_info} /> 
+            <ApexChart ohlcData={data.Market_info.OHLC} details={data.DB_info}  otherDetails={data.Market_info}/> 
             </div>
           </SwiperSlide>
         ))}

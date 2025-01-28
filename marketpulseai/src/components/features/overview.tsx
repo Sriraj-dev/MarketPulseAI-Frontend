@@ -40,8 +40,15 @@ const Overview = () => {
           analysis: item.data.analysis,
         }));
 
+        const marketnews = data.market_analysis.map((item: any) => ({
+          type: item.type,
+          analysis: item.data.marketnews,
+        }));
+
+        const allData = [...marketnews ,...analysis];
+
         // Serialize the Markdown content and attach the type
-        const serializedContentPromises = analysis.map(async (item: any) => {
+        const serializedContentPromises = allData.map(async (item: any) => {
           if (item.analysis) {
             const serialized = await serialize(item.analysis); // Serialize the Markdown text
             return { type: item.type, content: serialized }; // Attach type to the serialized content
@@ -68,13 +75,13 @@ const Overview = () => {
     <div className="flex flex-col md:flex-row lg:border-r border-[#EFF8F3]">
       {/* Navbar with clickable sections */}
 
-      <div className="flex flex-col  lg:px-0 md:px-8 px-2 md:flex-row  gap-8">
-        <div className="mt-10 w-full md:w-1/4 pr-4 mb-4 md:mb-0 lg:block hidden">
+      <div className="flex flex-col  lg:px-0 md:px-8 px-2 md:flex-row  gap-4">
+        <div className="mt-10 w-full md:w-1/6 mb-4 md:mb-0 lg:block hidden">
           <aside className=" sticky top-10  p-1">
             <TableOfContents1  />
           </aside>
         </div>
-        <div className="w-full lg:w-3/4 pl-0 lg:pl-4  ">
+        <div className="w-full lg:w-5/6 pl-0 lg:pl-4  ">
         {mdxSources.map((mdxSource, index) => (
             <div key={index} id={mdxSource.type}>
               <MDXRemote {...mdxSource.content} components={components} />
