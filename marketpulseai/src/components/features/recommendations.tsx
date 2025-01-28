@@ -84,7 +84,7 @@ const Recommendations = () => {
                    {rec.source}
                   </button>
                 </div>
-                <p className="text-sm text-gray-600 mt-2 sm:ml-6 ml-2">
+                <p className=" text-gray-600 mt-2 sm:ml-6 ml-2">
                   {rec.reason}
                 </p>
               </div>

@@ -1,10 +1,12 @@
 import React, { ReactNode } from 'react';
+import { Tenali_Ramakrishna } from 'next/font/google'; 
+const tenaliRamakrishna = Tenali_Ramakrishna({ weight: '400', subsets: ['latin'] });
 
 export function useMDXComponents() {
   return {
     h1: ({ children }: { children: ReactNode }) => (
       <h1
-        className="mdxh2 text-2xl font-bold"
+        className="mdxh2 text-2xl font-normal"
         id={typeof children === 'string' 
           ? children.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '') 
           : undefined}
@@ -14,7 +16,7 @@ export function useMDXComponents() {
     ),
     h2: ({ children }: { children: ReactNode }) => (
       <h2
-        className="mdxh2 text-2xl font-semibold"
+        className="mdxh2 text-2xl font-normal"
         id={typeof children === 'string' 
           ? children.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '') 
           : undefined}
@@ -24,7 +26,7 @@ export function useMDXComponents() {
     ),
     h3: ({ children }: { children: ReactNode }) => (
       <h3
-        className="mdxh2 text-2xl font-semibold"
+        className="mdxh2 text-2xl font-normal"
         id={typeof children === 'string' 
           ? children.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '') 
           : undefined}
@@ -34,7 +36,7 @@ export function useMDXComponents() {
     ),
     h4: ({ children }: { children: ReactNode }) => (
       <h4
-        className="mdxh2 text-2xl font-semibold"
+        className="mdxh2 text-2xl font-normal"
         id={typeof children === 'string' 
           ? children.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]/g, '') 
           : undefined}
@@ -43,7 +45,7 @@ export function useMDXComponents() {
       </h4>
     ),
     p: ({ children }: { children: ReactNode }) => (
-      <p className="mdxp text-base">{children}</p>
+      <p className={`${tenaliRamakrishna.className} mdxp text-xl`}>{children}</p>
     ),
     a: ({ href, children }: { href: string; children: ReactNode }) => (
       <a href={href} className="text-blue-500">
@@ -57,7 +59,7 @@ export function useMDXComponents() {
       <ol className="mdxol">{children}</ol>
     ),
     li: ({ children }: { children: ReactNode }) => (
-      <li className="mdxli">{children}</li>
+      <li className={`${tenaliRamakrishna.className} mdxli text-xl`}>{children}</li>
     ),
     strong: ({ children }: { children: ReactNode }) => (
       <strong className="text-black font-semibold">{children}</strong>
