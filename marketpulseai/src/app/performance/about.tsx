@@ -43,11 +43,11 @@ export function CompanyDetails({ rec }: { rec: StockRecommendation }) {
           />
         </div>
         <div className="">
-          <h2 className="text-2xl font-bold my-4">About</h2>
+          <h2 className="text-2xl font-bold my-4">Reason</h2>
           <p className="text-muted-foreground max-w-[40rem]">{rec.reason}</p>
 
           <a
-            className="text-primary mt-2"
+            className="text-primary mt-2 hover:underline-offset-1 hover:underline"
             href={pastData?.yahooLink}
             target="_blank"
             rel="noopener noreferrer"

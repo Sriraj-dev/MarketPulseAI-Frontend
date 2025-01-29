@@ -9,7 +9,7 @@ const Recommendations = () => {
   const [recommendations, setRecommendations] = useState<StockRecommendation[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
-  const [displayCount, setDisplayCount] = useState<number>(3); // To track how many recommendations to show
+  const [displayCount, setDisplayCount] = useState<number>(3);
 
   useEffect(() => {
     const fetchRecommendations = async () => {
@@ -48,7 +48,6 @@ const Recommendations = () => {
           </div>
          
           <div className="space-y-4">
-            {/* Display loading skeleton */}
             <div className="flex items-start gap-4 p-2">
               <div className="w-full h-10 bg-gray-200 rounded-md animate-pulse"></div>
             </div>

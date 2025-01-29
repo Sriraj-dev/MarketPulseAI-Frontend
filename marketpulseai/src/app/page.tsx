@@ -7,10 +7,10 @@ export default function Home() {
     <>
       <MarketSummary />
       <div className="flex lg:flex-row flex-col gap-8 px-6">
-        <div className="lg:w-2/3 ">
+        <div className="lg:w-full ">
         <Overview  />
         </div>
-        <div>
+        <div className="lg:w-1/3">
         <Recommendations />
         </div>
       </div>
