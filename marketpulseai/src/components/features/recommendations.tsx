@@ -67,9 +67,10 @@ const Recommendations = () => {
     return <div>{error}</div>;
   }
 
-  // Filter for weekly recommendations and slice based on displayCount
   const weeklyRecommendations = recommendations.filter((rec) => rec.type === "Weekly");
-  const recommendationsToDisplay = weeklyRecommendations.slice(0, displayCount); // Slice based on displayCount
+  const monthlyRecommendations = recommendations.filter((rec) => rec.type === "Monthly");
+  const allrecommendations = [...weeklyRecommendations, ...monthlyRecommendations];
+  const recommendationsToDisplay = allrecommendations.slice(0, displayCount); 
 
   return (
     <div className="lg:w-[26rem] w-full mx-auto mb-8">
