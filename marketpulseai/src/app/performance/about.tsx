@@ -3,7 +3,6 @@
 import { getOhlcData } from "@/api/marketData";
 import { StockOHLCResponse, StockRecommendation } from "@/models/marketModel";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const ApexChart = dynamic(() => import("@/components/features/candle"), {

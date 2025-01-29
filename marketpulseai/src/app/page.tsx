@@ -7,8 +7,12 @@ export default function Home() {
     <>
       <MarketSummary />
       <div className="flex lg:flex-row flex-col gap-8 px-6">
-        <Overview />
+        <div className="lg:w-2/3 ">
+        <Overview  />
+        </div>
+        <div>
         <Recommendations />
+        </div>
       </div>
     </>
   );

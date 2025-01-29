@@ -32,7 +32,36 @@ const Recommendations = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="lg:w-[26rem] w-full mx-auto mb-8">
+        <PastPerformance />
+        <div className="bg-white mt-10">
+          <div className="flex justify-between items-center">
+            <h3 className="text-lg font-semibold">Recommendations</h3>
+            <Link
+              className="text-sm text-blue-600 underline underline-offset-4"
+              style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
+              href="/performance"
+            >
+              See All
+            </Link>
+          </div>
+         
+          <div className="space-y-4">
+            {/* Display loading skeleton */}
+            <div className="flex items-start gap-4 p-2">
+              <div className="w-full h-10 bg-gray-200 rounded-md animate-pulse"></div>
+            </div>
+            <div className="flex items-start gap-4 p-2">
+              <div className="w-full h-10 bg-gray-200 rounded-md animate-pulse"></div>
+            </div>
+            <div className="flex items-start gap-4 p-2">
+              <div className="w-full h-10 bg-gray-200 rounded-md animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
@@ -57,9 +86,7 @@ const Recommendations = () => {
             See All
           </Link>
         </div>
-        <p className="mb-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+       
         <div className="space-y-4">
           {recommendationsToDisplay.map((rec, index) => (
             <div
@@ -101,7 +128,6 @@ const Recommendations = () => {
             className="mt-4 bg-[#F6F6F6] text-xl text-black w-full px-4 py-2 "
           >
             <p className="flex m-auto justify-center"> Load More</p>
-           
           </button>
         )}
       </div>
