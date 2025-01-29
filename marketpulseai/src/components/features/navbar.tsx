@@ -94,6 +94,7 @@ const Navbar = () => {
                   </span>
                 </div>
               </div>
+              <button className="w-full m-auto rounded-md bg-gray-400 text-black py-2">Get Subscription</button>
             </div>
           </ul>
         </div>

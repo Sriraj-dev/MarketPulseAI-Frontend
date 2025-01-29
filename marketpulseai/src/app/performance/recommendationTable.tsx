@@ -7,12 +7,22 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { getSuggestions } from "@/api/marketData"
 import type { StockRecommendation } from "@/models/marketModel"
 import { CompanyDetails } from "./about"
+import React from "react"
+
+const ShimmerLoader = () => {
+  return (
+    <div className="space-y-6">
+      <div className="w-full h-[30px] bg-gray-200 animate-pulse"></div>
+      <div className="w-full h-[300px] bg-gray-200 animate-pulse"></div>
+    </div>
+  );
+};
 
 export function RecommendationsTable() {
   const [recommendations, setRecommendations] = useState<StockRecommendation[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [selectedCompany, setSelectedCompany] = useState<string | null>(null)
+  const [selectedCompanies, setSelectedCompanies] = useState<string[]>([])
 
   useEffect(() => {
     const fetchRecommendations = async () => {
@@ -30,17 +40,24 @@ export function RecommendationsTable() {
     fetchRecommendations()
   }, [])
 
-  if (loading) {
-    return <div className="text-center py-8">Loading recommendations...</div>
-  }
-
   if (error) {
     return <div className="text-center py-8 text-red-500">{error}</div>
   }
 
+  const toggleCompany = (companyName: string) => {
+    setSelectedCompanies((prevSelected) =>
+      prevSelected.includes(companyName)
+        ? prevSelected.filter((name) => name !== companyName) // Remove from array
+        : [...prevSelected, companyName] // Add to array
+    )
+  }
+
   return (
     <div className="space-y-4 max-w-[70rem]">
-      <Table>
+         {loading ? 
+      
+      (<ShimmerLoader />) : (
+        <Table>
         <TableHeader>
           <TableRow>
             <TableHead className="font-bold">Name</TableHead>
@@ -54,8 +71,8 @@ export function RecommendationsTable() {
         </TableHeader>
         <TableBody>
           {recommendations.map((rec) => (
-            <>
-              <TableRow key={rec.name}>
+            <React.Fragment key={rec.name}>
+              <TableRow>
                 <TableCell>{rec.name}</TableCell>
                 <TableCell>{rec.recommendation}</TableCell>
                 <TableCell>{rec.dateofrecommendation}</TableCell>
@@ -66,9 +83,9 @@ export function RecommendationsTable() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    onClick={() => setSelectedCompany(selectedCompany === rec.name ? null : rec.name)}
+                    onClick={() => toggleCompany(rec.name)}
                   >
-                    {selectedCompany === rec.name ? (
+                    {selectedCompanies.includes(rec.name) ? (
                       <ChevronDown className="h-4 w-4" />
                     ) : (
                       <ChevronRight className="h-4 w-4" />
@@ -76,18 +93,19 @@ export function RecommendationsTable() {
                   </Button>
                 </TableCell>
               </TableRow>
-              {selectedCompany === rec.name && (
+              {selectedCompanies.includes(rec.name) && (
                 <TableRow>
                   <TableCell colSpan={7} className="p-4 bg-muted">
-                  <CompanyDetails rec={rec}  />
+                    <CompanyDetails rec={rec} />
                   </TableCell>
                 </TableRow>
               )}
-            </>
+            </React.Fragment>
           ))}
         </TableBody>
       </Table>
+      )}
+     
     </div>
   )
 }
-

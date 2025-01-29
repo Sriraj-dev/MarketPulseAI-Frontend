@@ -25,12 +25,22 @@ export function CompanyDetails({ rec }: { rec: StockRecommendation }) {
     };
 
     fetchStockSummary();
-  }, []);
+  }, [rec]);
 
   if (loading) {
-    return <div>Loading...</div>; // Optionally, show a loading indicator
+    return (
+      <div className="my-6 mx-4 p-2">
+        <div className="flex md:flex-row flex-col gap-4">
+          <div className="w-full h-[300px] bg-gray-200 animate-pulse rounded-lg"></div>
+          <div className="flex flex-col gap-4 w-full">
+            <div className="h-8 bg-gray-200 animate-pulse rounded"></div>
+            <div className="h-4 bg-gray-200 animate-pulse rounded w-3/4"></div>
+            <div className="h-4 bg-gray-200 animate-pulse rounded w-1/2"></div>
+          </div>
+        </div>
+      </div>
+    );
   }
-  console.log(rec, "pastData", pastData);
 
   return (
     <div className="my-6 mx-4 p-2">
