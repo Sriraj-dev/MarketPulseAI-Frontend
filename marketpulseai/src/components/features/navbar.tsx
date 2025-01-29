@@ -1,6 +1,5 @@
 "use client";
 import React, {  useEffect, useState } from "react";
-import { Button } from "../ui/button";
 import Image from "next/image";
 import logo from "../../../public/icon.png";
 import user from "../../../public/usericon.png";
@@ -95,9 +94,6 @@ const Navbar = () => {
                   </span>
                 </div>
               </div>
-              <Button className="w-full mt-4" variant="default">
-                Get Subscription
-              </Button>
             </div>
           </ul>
         </div>
