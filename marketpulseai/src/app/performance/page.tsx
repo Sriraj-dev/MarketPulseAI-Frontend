@@ -1,11 +1,10 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { RecommendationsTable } from "./recommendationTable";
 import Chartohlc from "./chart";
-import { getCredibility } from "@/api/marketData";
-import { StockCredibility } from "@/models/marketModel";
+import { usePerformanceStore } from "@/stores/rootStore";
 
-// Shimmer loader component
+// Shimmer loader component remains the same
 const ShimmerLoader = () => {
   return (
     <div className="space-y-6">
@@ -16,34 +15,24 @@ const ShimmerLoader = () => {
 };
 
 const Performance = () => {
-  const [pastData, setPastData] = useState<StockCredibility[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const { pastData, loading, fetchStockSummary } = usePerformanceStore();
 
   useEffect(() => {
-    const fetchStockSummary = async () => {
-      try {
-        const data = await getCredibility();
-        setPastData(data.credible_stocks);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching stock summary:", error);
-      }
-    };
-
     fetchStockSummary();
-  }, []);
+  }, [fetchStockSummary]);
 
   return (
     <div className="w-11/12 mx-auto py-8">
       <h2 className="text-2xl font-bold mb-6">Past Performance</h2>
-      {loading ? 
-      
-      (<ShimmerLoader />) : (
+      {loading ? (
+        <ShimmerLoader />
+      ) : pastData && pastData.length > 0 ? (
         <Chartohlc pastData={pastData} />
+      ) : (
+        <p className="text-gray-500 text-lg">No recommendations available right now</p>
       )}
-      <div className="flex flex-wrap gap-8"></div>
 
-      <h2 className="text-2xl font-bold mb-6">All Recommendations</h2>
+      <h2 className="text-2xl font-bold mb-6 mt-8">All Recommendations</h2>
       <RecommendationsTable />
     </div>
   );

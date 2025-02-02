@@ -16,7 +16,11 @@ const ApexChart = ({ ohlcData, details, otherDetails }: ApexChartProps) => {
         name: "Candle",
 
         data: ohlcData.map((data: any) => ({
-          x: new Date(data.date).getTime(),
+          x: new Date(data.date).toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          }),
           y: [data.open, data.high, data.low, data.close],
         })),
       },
@@ -70,22 +74,28 @@ const ApexChart = ({ ohlcData, details, otherDetails }: ApexChartProps) => {
         </div>
       </div>
       <div className="flex-1">
-  <div className="flex sm:flex-row flex-col justify-between sm:items-center items-start">
-    <div className="flex items-center gap-2">
-      <h4 className="font-semibold text-base">{details.name}</h4>
-      <p className="px-2 rounded text-base font-medium bg-gray-100 pt-2">
-        {details.price_change ? details.price_change : "+5.5%"}
-      </p>
-    </div>
-    <button className="bg-primary rounded-full text-white text-sm px-4 py-1">
-      {otherDetails.sector}
-    </button>
-  </div>
-  <p className="text-base text-gray-600 mt-2">
-    Market Cap: {formatNumber(otherDetails.marketCap)}
-  </p>
-</div>
-
+        <div className="flex sm:flex-row flex-col justify-between sm:items-center items-start">
+          <div className="flex items-center gap-2">
+            <h4 className="font-semibold text-base">{details.name}</h4>
+            <p className="px-2 rounded text-base font-medium bg-gray-100 pt-2">
+              {details.price_change >= 0
+                ? `( + ${details.price_change}% )`
+                : `( ${details.price_change}% )`}
+            </p>
+          </div>
+          <button className="bg-primary rounded-full text-white text-sm px-4 py-1">
+            {otherDetails.sector}
+          </button>
+        </div>
+        <div className="flex justify-between items-center">
+        <p className="text-base text-gray-600 mt-2">
+          Market Cap: {formatNumber(otherDetails.marketCap)}
+        </p>
+        <p className="text-base text-gray-600 mt-1">
+          Suggested on: {details.dateofrecommendation}
+        </p>
+        </div>
+      </div>
     </div>
   );
 };

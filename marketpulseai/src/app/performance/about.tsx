@@ -1,31 +1,23 @@
 "use client";
 
-import { getOhlcData } from "@/api/marketData";
-import { StockOHLCResponse, StockRecommendation } from "@/models/marketModel";
+import { StockRecommendation } from "@/models/marketModel";
+import { useOhlcStore } from "@/stores/rootStore";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const ApexChart = dynamic(() => import("@/components/features/candle"), {
   ssr: false,
 });
 
 export function CompanyDetails({ rec }: { rec: StockRecommendation }) {
-  const [pastData, setPastData] = useState<StockOHLCResponse | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const key = `${rec.ticker}-${rec.dateofrecommendation}`;
+  const { ohlcData, loadingStates, fetchOhlcData } = useOhlcStore();
+  const pastData = ohlcData[key];
+  const loading = loadingStates[key] ?? true;
 
   useEffect(() => {
-    const fetchStockSummary = async () => {
-      try {
-        const data = await getOhlcData(rec.ticker, rec.dateofrecommendation);
-        setPastData(data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching stock summary:", error);
-      }
-    };
-
-    fetchStockSummary();
-  }, [rec]);
+    fetchOhlcData(rec.ticker, rec.dateofrecommendation);
+  }, [rec.ticker, rec.dateofrecommendation, fetchOhlcData]);
 
   if (loading) {
     return (
@@ -64,6 +56,7 @@ export function CompanyDetails({ rec }: { rec: StockRecommendation }) {
           >
             Know More
           </a>
+
         </div>
       </div>
     </div>
