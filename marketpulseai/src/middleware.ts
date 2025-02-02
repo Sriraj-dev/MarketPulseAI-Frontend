@@ -56,7 +56,7 @@ export async function middleware(req: NextRequest) {
       );
       if (refreshResponse.status !== 200)   return NextResponse.redirect('https://us-east-1kaujab9qo.auth.us-east-1.amazoncognito.com/login/continue?client_id=4v4ts3vvisupphos53v5rkcv31&redirect_uri=https%3A%2F%2Fmarket-pulse-ai-frontend.vercel.app&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile');
 
-      const { accessToken, idToken: newIdToken, refreshToken: newRefreshToken } = refreshResponse.data;
+      const { accessToken, idToken: newIdToken } = refreshResponse.data;
       const response = NextResponse.next();
 
       response.cookies.set('accessToken', accessToken, { sameSite: 'lax', maxAge: 259200 });
