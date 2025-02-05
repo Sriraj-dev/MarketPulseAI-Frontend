@@ -1,7 +1,7 @@
 import { getCredibilityResponse, getSuggestionsResponse, LivaMarketResponse, StockOHLCResponse, StockSummaryResponse } from '@/models/marketModel';
 import axios from 'axios';
 
-const apiUrl = process.env.NEXT_PUBLIC_MARKET_API_URL;
+const apiUrl = process.env.NEXT_PUBLIC_DATASERVICE_URL;
 
 const getIdToken = (): string => {
   const cookies = document.cookie

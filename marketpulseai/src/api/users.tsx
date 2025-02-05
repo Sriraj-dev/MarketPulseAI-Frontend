@@ -1,7 +1,7 @@
 import { UserDetailsResponse } from '@/models/userModel';
 import axios from 'axios';
 
-const userapi = process.env.NEXT_PUBLIC_USER_API_URL;
+const userapi = process.env.NEXT_PUBLIC_AUTHSERVICE_URL;
 
 const getIdToken = (): string => {
   const cookies = document.cookie
