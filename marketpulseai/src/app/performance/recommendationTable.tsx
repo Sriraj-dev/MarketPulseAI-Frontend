@@ -74,7 +74,7 @@ export function RecommendationsTable() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => toggleCompany(index,rec.name)}
+                      onClick={() => toggleCompany(index)}
                     >
                       {selectedCompanies.includes(index) ? (
                         <ChevronDown className="h-4 w-4" />

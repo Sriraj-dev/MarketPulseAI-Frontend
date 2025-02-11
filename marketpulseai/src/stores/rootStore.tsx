@@ -108,7 +108,7 @@ export const useRecommendationTableStore = create<RecommendationTableState>((set
     }
   },
 
-  toggleCompany: (index : any,companyName: string) => {
+  toggleCompany: (index : any) => {
     set((state) => ({
       selectedCompanies: state.selectedCompanies.includes(index)
         ? state.selectedCompanies.filter((_) => _ !== index)

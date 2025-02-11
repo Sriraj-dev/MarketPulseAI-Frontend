@@ -29,7 +29,7 @@ export interface RecommendationTableState {
   error: string | null;
   selectedCompanies: number[];
   fetchRecommendations: () => Promise<void>;
-  toggleCompany: (index : number, companyName: string) => void;
+  toggleCompany: (index : number) => void;
 }
 
 export interface OHLCState {
