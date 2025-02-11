@@ -23,6 +23,7 @@ const Performance = () => {
 
   return (
     <div className="w-11/12 mx-auto py-8">
+      
       <h2 className="text-2xl font-bold mb-6">Past Performance</h2>
       {loading ? (
         <ShimmerLoader />
@@ -31,9 +32,11 @@ const Performance = () => {
       ) : (
         <p className="text-gray-500 text-lg">No recommendations available right now</p>
       )}
-
+    
+    
       <h2 className="text-2xl font-bold mb-6 mt-8">All Recommendations</h2>
       <RecommendationsTable />
+
     </div>
   );
 };

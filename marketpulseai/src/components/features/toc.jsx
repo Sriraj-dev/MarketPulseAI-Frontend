@@ -4,9 +4,9 @@ import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
 
 const items = [
-    { id: 'Daily', title: 'Daily Highlight' },
-    { id: 'Weekly', title: 'Weekly Highlight' },
-    { id: 'Monthly', title: 'Monthly Highlight' },
+    { id: 'Daily', title: 'Daily Market Insights' },
+    { id: 'Weekly', title: 'Weekly Analysis' },
+    { id: 'Monthly', title: 'Monthly Analysis' },
   ];
 
 export default function TableOfContents1() {

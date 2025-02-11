@@ -74,9 +74,9 @@ export function RecommendationsTable() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => toggleCompany(rec.name)}
+                      onClick={() => toggleCompany(index,rec.name)}
                     >
-                      {selectedCompanies.includes(rec.name) ? (
+                      {selectedCompanies.includes(index) ? (
                         <ChevronDown className="h-4 w-4" />
                       ) : (
                         <ChevronRight className="h-4 w-4" />
@@ -84,7 +84,7 @@ export function RecommendationsTable() {
                     </Button>
                   </TableCell>
                 </TableRow>
-                {selectedCompanies.includes(rec.name) && (
+                {selectedCompanies.includes(index) && (
                   <TableRow>
                     <TableCell colSpan={7} className="p-4 bg-muted">
                       <CompanyDetails rec={rec} />
