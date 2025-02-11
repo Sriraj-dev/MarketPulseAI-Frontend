@@ -35,7 +35,7 @@ const Navbar = () => {
   return (
     <div className="py-2 px-6">
       <nav className="flex items-center justify-between w-11/12 mx-auto relative">
-        <Link className="flex items-center gap-2 text-primary" href="/">
+        <Link className="flex items-center gap-2 text-primary md:pl-0 pl-6" href="/">
           <Image src={logo} alt="Market Pulse Logo" width={32} height={32} />
           <h1 className="text-xl font-semibold">M@rketPulse AI</h1>
         </Link>

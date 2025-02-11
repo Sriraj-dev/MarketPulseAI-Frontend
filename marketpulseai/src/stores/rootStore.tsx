@@ -73,7 +73,7 @@ export const useRecommendationStore = create<RecommendationState>()(
           });
         } catch (error) {
           set({ 
-            error: 'Our website is updating right now ,  please try after some time.',
+            error: 'We are facing some technical issue, Please try after sometime .',
             loading: false 
           });
           console.error("Error details:", error);
@@ -101,18 +101,18 @@ export const useRecommendationTableStore = create<RecommendationTableState>((set
       set({ recommendations: data, loading: false });
     } catch (error) {
       set({
-        error: 'Our website is updating right now , please try after some time .',
+        error: 'We are facing some technical issue, Please Try After some time',
         loading: false
       });
       console.error("Error details:", error);
     }
   },
 
-  toggleCompany: (companyName: string) => {
+  toggleCompany: (index : any) => {
     set((state) => ({
-      selectedCompanies: state.selectedCompanies.includes(companyName)
-        ? state.selectedCompanies.filter((name) => name !== companyName)
-        : [...state.selectedCompanies, companyName]
+      selectedCompanies: state.selectedCompanies.includes(index)
+        ? state.selectedCompanies.filter((_) => _ !== index)
+        : [...state.selectedCompanies, index]
     }));
   }
 }));

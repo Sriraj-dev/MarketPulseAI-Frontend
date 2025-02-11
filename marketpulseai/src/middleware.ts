@@ -5,7 +5,6 @@ import jwt from 'jsonwebtoken';
 const codeapi = process.env.NEXT_PUBLIC_AUTHSERVICE_URL;
 const awsloginpage = process.env.NEXT_PUBLIC_SIGNUP_PAGE;
 const hostedui = process.env.NEXT_PUBLIC_HOSTED_UI;
-//TODO ::
 
 function isTokenExpired(token: string | undefined): boolean {
   if (!token) return true;

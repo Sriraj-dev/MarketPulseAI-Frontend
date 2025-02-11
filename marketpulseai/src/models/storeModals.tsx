@@ -27,9 +27,9 @@ export interface RecommendationTableState {
   recommendations: StockRecommendation[];
   loading: boolean;
   error: string | null;
-  selectedCompanies: string[];
+  selectedCompanies: number[];
   fetchRecommendations: () => Promise<void>;
-  toggleCompany: (companyName: string) => void;
+  toggleCompany: (index : number) => void;
 }
 
 export interface OHLCState {
