@@ -34,7 +34,12 @@ const Performance = () => {
       )}
     
     
-      <h2 className="text-2xl font-bold mb-6 mt-8">All Recommendations</h2>
+      <h2 className="text-2xl font-bold mt-8">All Recommendations</h2>
+      {/* Add the disclaimer text here */}
+      <p className="text-sm text-gray-600 mb-4">
+        These suggestions are generated from the daily market news data using AI. Please 
+        do your own research before investing in the market.
+      </p>
       <RecommendationsTable />
 
     </div>
