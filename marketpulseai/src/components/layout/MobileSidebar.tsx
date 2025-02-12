@@ -68,7 +68,9 @@ const MobileSidebar = () => {
                     onClick={() => setIsOpen(false)}
                     >
                         <Home size={20} className='text-primary'/>
+
                         <span className='text-primary'>Market Monitor</span>
+
                 </Link>
               </div>
               {isHomeExpanded ? <ChevronUp size={20} className='text-primary'/> : <ChevronDown size={20} className='text-primary'/>}
