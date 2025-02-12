@@ -82,7 +82,11 @@ const Recommendations = () => {
             See All
           </Link>
         </div>
-       
+         {/* Add the disclaimer text here */}
+        <p className="text-sm text-gray-600 mt-2 mb-4">
+          These suggestions are generated from the daily market news data using AI. Please 
+          do your own research before investing in the market.
+        </p>
         <div className="space-y-4">
           {recommendationsToDisplay.map((rec, index) => (
             <div
